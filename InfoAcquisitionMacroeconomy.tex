@@ -1,0 +1,1178 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+]{article}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[top=30mm,left=20mm,heightrounded]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage[noblocks]{authblk}
+\usepackage[giveninits=false, uniquename=false]{biblatex}
+\usepackage{mathtools}
+\renewcommand*{\Authsep}{, }
+\renewcommand*{\Authand}{, }
+\renewcommand*{\Authands}{, }
+\renewcommand\Affilfont{\small}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{remark}
+\AtBeginDocument{\renewcommand*{\proofname}{Proof}}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\newtheorem{refremark}{Remark}[section]
+\newtheorem{refsolution}{Solution}[section]
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Aggregating supply and demand with incomplete information and endogenous information acquisition (work in progress)},
+  pdfauthor={Douglas K. G. Araujo},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Aggregating supply and demand with incomplete information and
+endogenous information acquisition (work in progress)\thanks{This work
+represents my opinion and not necessarily that of the BIS. An early
+version of the manuscript circulated as `Information acquisition in
+financial markets through artificial intelligence'.}}
+
+
+  \author{Douglas K. G. Araujo}
+            \affil{%
+                  Bank for International
+Settlements, douglas.araujo@bis.org
+              }
+      
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+An economy is modelled as a simultaneous aggregation of multiple
+bilateral interactions under incomplete information and with strategic
+complementarities between supply and demand preferences, allowing for
+arbitrary consumption function types and constraints. This view
+microfounds the state of the economy with how well agents aticipate one
+another's preferences, eg a output gap occurs when the weighted sum of
+all agents' over- or underestimation of each other's preferences is not
+neutral. Given the role of information about others' actions, the model
+is extended with endogenous information acquisition, enabling a flexible
+analysis of the role of information in the economy. This tooling is used
+to study the macroeconomic impact of artificial intelligence (AI) models
+that jointly considers its information aspect, strategic
+complementarities and supply chain considerations. If AIs are widely
+used to increase information precision across the board, the economy (is
+mode efficient). But if the precision of AI is unequal then (society is
+worse off if the largest players have access to better technology). JEL
+codes: (D82, G14).
+\end{abstract}
+
+\section{Introduction}\label{introduction}
+
+This paper microfounds from individual-level demand and supply drivers.
+The goal of this model is to offer a flexible alternative to
+macroeconomic models that is built on the multiple bilateral strategic
+interactions under incomplete information.
+
+One application of this model is to shed light on the role of AI as a
+factor in economic activity. The model is flexible enough to be fit to
+various types of microdata (firms only, firms and employees/consumers,
+etc).
+
+\subsection{Related literature}\label{related-literature}
+
+\subsubsection{Strategic complementarities and
+macroeconomics}\label{strategic-complementarities-and-macroeconomics}
+
+Earlier efforts include Diamond (1982), who model a barter economy of
+bilateral connections where transactions take place after a costly
+search, and Cooper and John (1988), who analyse strategic
+complementarities that result from production functions, demand
+functions and matching technologies in a imperfectly competitive
+heterogenous economy, but their model does not feature incomplete
+information. More recently, Fernandez, Rudov, and Yariv (2022) model A
+broad review of the role of incomplete information in macroeconomic
+settings is provided at Angeletos and Lian (2016).
+
+\subsubsection{Endogenous information
+acquisition}\label{endogenous-information-acquisition}
+
+Hellwig and Veldkamp (2009) model the situation where firms competing
+endogenously acquire information to improve precision of their demand
+forecasting. Farboodi and Veldkamp (2020)'s model distinguishes between
+processing information to better understand fundamentals as opposed to
+forecasting the demand of other investors.
+
+\subsubsection{Effects of information on the
+economy}\label{effects-of-information-on-the-economy}
+
+Acemoglu (2024), in contrast, estimates AI will not have such a
+significant impact.
+
+\section{Static setup}\label{static-setup}
+
+This section describes a static version of the game to present the main
+building blocks and fix intuition.
+
+\subsection{Economic agents and their
+interactions}\label{economic-agents-and-their-interactions}
+
+An economy comprises individual agents \(i = 1, \dots, N\). These agents
+are for now described as ``firms'', an interpretation that is relaxed in
+Section~\ref{sec-interpretation}. Firms transact bilaterally with one
+another through the asymmetric matrix \(J \in \{0, 1\}^{N \times N}\),
+where element \(j_{ij} = 1\) means that \(i\) buys some unspecified good
+or service from \(j\) and \(0\) denotes the inexistence of this
+relationship.
+
+The element \(j_{ij}\) results from the combination of \(i\)'s demand
+for \(j\)'s product, \(d_{ij} \geq 0\) and \(j\)'s preference or
+preparedness for selling products to \(i\), \(s_{ji} \geq 0\). Each firm
+spawns with a demand and a supply profile,
+\(d_i, s_i \in \mathbb{B}^N\), and they always known their own profiles.
+Define \(\theta_{ij} = d_{ij} s_{ji}\) to be the common payoff for \(i\)
+and \(j\) if \(i\) buys from \(j\); if the transaction does not take
+place, the payoff is \(0\).\footnote{Cases like that of repugnant
+  transactions (Roth (2007)), where either \(d_{ij}\) or \(s_{ji}\) are
+  negative (or both) can be dealt with by this model but is not an
+  essential component, so is not further discussed except to say that if
+  a possibility exists that both demand and supply are negative, then
+  \(\theta_{ij} = \text{max}(0, d_{ij} s_{ji})\).} Collecting the demand
+and supply elements in their own matrices \(D\) and \(S\), then
+\(\theta = D \odot S^T\), with \(\odot\) representing the element-wise
+Hadamard multiplication. Using \(N=2\) to illustrate these values,
+
+\[
+D = 
+\begin{bmatrix}
+d_{11} & d_{12} \\
+d_{21} & d_{22}
+\end{bmatrix}
+,
+S = 
+\begin{bmatrix}
+s_{11} & s_{12} \\
+s_{21} & s_{22}
+\end{bmatrix}
+,
+\theta = 
+\begin{bmatrix}
+d_{11}s_{11} & d_{12}s_{21} \\
+d_{21}s_{12} & d_{22}s_{22}
+\end{bmatrix}.
+\]
+
+Then, bilateral transactions take place according to a map
+\(C : \mathbb{R}^{N \times N} \to \{0, 1\}^{N \times N}\) that is
+elementwise non-decreasing in \(\theta\), ie
+\(C(\theta')_{ij} \geq C(\theta)_{ij}\) if: \[
+\theta' = \begin{cases} \theta_{mn}^{'} > \theta_{mn} & m=i, n=j\\ \theta_{mn} & \text{otherwise} \end{cases}.
+\]
+
+This consumption function \(C\) is very general, but once it is applied
+on the payoff matrix, it yields the bilateral transaction matrix
+\(J = C(\theta)\). Because \(C\) is elementwise non-decreasing in
+\(\theta\), whenever there is any form of constraint (budget,
+technological or otherwise), firms will choose to demand only the
+bilateral transactions they rank highest, and to supply only to those
+clients who the firm as a supplier value the most. So it is useful
+regardless of the shape of \(C\) to know how each firm values their
+demand for each bilateral transaction relative to alternatives, and the
+same from the supply perspective. A useful way to do this is with a
+softmax function over the \(i\)th row of \(\theta\) for the demand:
+
+\begin{equation}\phantomsection\label{eq-softmaxrow}{
+\tilde{d}_{ij} = \frac{e^{\theta_{ij}}}{\sum_{k=1}^N e^{\theta_{ik}}},
+}\end{equation}
+
+and similarly using \(\theta\)'s columns for the supply interactions:
+
+\begin{equation}\phantomsection\label{eq-softmaxcol}{
+\tilde{s}_{ji} = \frac{e^{\theta_{ji}}}{\sum_{k=1}^N e^{\theta_{ki}}}.
+}\end{equation}
+
+For exposition, take \(C\) to be a function that matches buyers and
+sellers according to a ``budget'' that limits how many matches they
+might attempt. Formally, each \(i\) has a budget of
+\(K_i^d \leq N-1 \in \mathbb{N}\) maximum bilateral purchase
+transactions and an arbitrary budget of
+\(K_i^s \leq N-1 \in \mathbb{N}\) bilateral sales transactions for
+simplicity. This means that \(i\) will choose to buy from the top
+\(K_i^d\) highest values in row \(i\) of \(\tilde{D}\), and sell to the
+\(K_i^s\) highest values in column \(i\) of \(\tilde{S}\). In other
+words, each agent will choose to act only on their own most advantageous
+purchases as valued by Equation~\ref{eq-softmaxrow} and
+Equation~\ref{eq-softmaxcol} respectively. Note that \(i\) can prefer to
+interact with itself; see Section~\ref{sec-interpretation} for comments
+on the interpretation of these cases.
+
+These decisions to actually demand a product or supply it are stored in
+vectors \(a_i^d, a_i^s\) for each firm's demand and supply actions.
+These vectors span the space of possible strategy profiles for the
+demand and supply actions, respectively. Based on the previously
+discussed top-\(K\) rule, define the matrices \(A^d\) and \(A^s\) to
+collect, respectively, the \(\{0, 1\}\) decision of each firm \(i\) to
+demand or to supply goods to firm \(j\). When both the demand decision
+\(a_{ij}^d\) and supply decision \(a_{ij}\) are \(1\), then \(J_{ij}\)
+is also \(1\); otherwise it is \(0\). Expanding on the \(N=2\) example
+above, and assuming \(K_i^d=1 \; \forall i\), \(K_i^s=2 \; \forall i\),
+with an arbitrary ordering that assumes that transaction with another
+firm is more valuable than with oneself:
+
+\[
+\tilde{D} = 
+\begin{bmatrix}
+\tilde{d}_{11} & \tilde{d}_{12} \\
+\tilde{d}_{21} & \tilde{d}_{22}
+\end{bmatrix}
+,
+\tilde{S} = 
+\begin{bmatrix}
+\tilde{s}_{11} & \tilde{s}_{12} \\
+\tilde{s}_{21} & \tilde{s}_{22}
+\end{bmatrix}
+,
+A^d = 
+\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}
+,
+A^s = 
+\begin{bmatrix}
+1 & 1 \\
+1 & 1
+\end{bmatrix}
+,
+J = 
+\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}.
+\]
+
+The values above can also be summarised in an outcomes matrix \(O\),
+where each element \(o_{ij}\) corresponds to the outcome of each
+bilateral transaction between \(i\) and \(j\). Beyond gross payoffs
+\(\theta_{ij}\), which accrue to both counterparties if both engage in
+that transaction, to provide some more generality to the model consider
+also that actually positioning oneself for demanding or supplying goods
+or services to another firm entails non-negative costs
+\(T^d, T^s \geq 0\), with elements \(t_{ij}^{z \in \{d, s\}}\). They
+might represent, for example, distance betwen \(i\) and \(j\),
+investment in advertising tailored to \(j\) tastes, search costs, sales
+efforts, etc. (As for the other building blocks, there is ample
+flexibility in how the costs are estimated in practice.) Thus the
+outcomes are:
+
+\begin{equation}\phantomsection\label{eq-outcomes}{
+O = 
+\begin{bmatrix}
+-(a_{11}^d t_{11}^d) + (a_{11}^d d_{11} s_{11} a_{11}^s) - (a_{11}^s t_{11}^s) & -(a_{12}^d t_{12}^d) + (a_{12}^d d_{12} s_{21} a_{21}^s) - (a_{21}^s t_{21}^s)\\
+-(a_{21}^d t_{21}^d) + (a_{21}^d d_{21} s_{12} a_{12}^s) - (a_{21}^s t_{21}^s) & -(a_{22}^d t_{22}^d) + (a_{22}^d d_{22} s_{22} a_{22}^s) - (a_{22}^s t_{22}^s)
+\end{bmatrix}.
+}\end{equation}
+
+Each element \(o_{ij}\) of Equation~\ref{eq-outcomes} has four possible
+values. When no firm decides to demand or supply that particular
+transaction, the outcome is \(0\). When at most one firm engages, the
+outcome is its demand or supply cost. And when both agents coordinate,
+\(o_{ij}\) is defined as the combined demand and supply driver. In the
+current example, \(O=\big[\begin{smallmatrix}
+-t_{11}^s & d_{12} s_{21} - t_{12}^d - t_{21}^s \\
+d_{21} s_{12} -t_{21}^d - t_{12}^s & - t_{22}^s
+\end{smallmatrix}\big]\).
+
+The outcomes of the bilateral transactions speak to the overall value
+added (or subtracted). But what each firm cares about is their own
+payoff from each transaction, which is defined as the combined value of
+the transaction, \(\theta_{ij}\), minus costs incurred in positioning
+themselves for demanding (\(t_{ij}^d\)) or supplying (\(t_{ij}^s\)) that
+transaction (or both demanding and supplying if \(i=j\)). Aggregating
+the payoffs at the firm level results in vector \(p = (p_i)_{i=1}^N\),
+with:
+
+\begin{equation}\phantomsection\label{eq-firmlevelpayoff}{
+p_i = \sum_{j=1}^N \underbrace{a_{ij}^d (d_{ij} s_{ji} a_{ji}^s - t_{ij}^d)}_{\text{Net payoff from $i$'s demand to match with $j$}} + \underbrace{a_{ij}^s (a_{ji}^d d_{ji} s_{ij} - t_{ij}^s)}_{\text{Net payoff from $i$ supplying to $j$}}.
+}\end{equation}
+
+For firm 1 and firm 2 in the current example, this is:
+
+\[
+\begin{split}
+p_1 = d_{12} s_{21} - t_{12}^d - t_{11}^s + d_{21} s_{12} - t_{12}^s, \\
+p_2 = d_{21} s_{12} -t_{21}^d + d_{12} s_{21} - t_{21}^s - t_{22}^s.
+\end{split}
+\]
+
+In this static game, firms first discover \(D\) and \(S\) and then
+decide how much and from whom to demand or to supply in \(A^d, A^d\). In
+a complete information benchmark, firms know all demand and supply
+drivers and the budget function and constraints of each other firm.
+Armed with this information, all firms can estimate \(A^d\) and \(A^s\)
+for all firms, and thus all will know the implied \(P\) as well as the
+payoff under any deviation from \(A^d\) or \(A^s\). This allows firms to
+conclude that \((A^d(D), A^s(S))\) is the Nash equilibrium action
+profile. Deviating unilaterally from that is not advantageous to any
+particular firm because it will take demand or supply away from good
+transactions into transactions that are not met correspondingly by the
+counterparty supplying or demanding that good.
+
+This economy abstracts away from important components of
+``micro-to-macro'' aggregation (eg, Baqaee and Farhi (2018), Baqaee and
+Farhi (2019)), such as a definition of elasticities of substitution.
+This is to concentrate attention on the aspects of the model that are
+more dependent on coordination between supply and demand.
+
+\subsection{Incomplete information}\label{incomplete-information}
+
+The key aspect of this model is that each firm knows only the
+realisation of its own demand towards firm \(j\)'s products and its own
+preference for supplying goods and services to all \(j\) firms. For all
+other cases, ie firm \(j \neq i\)'s demand for \(k\)'s products and its
+supply to firm \(k\) are only observed with a noisy signal.\footnote{Traditionally,
+  games of incomplete information such as global games (Carlsson and Van
+  Damme (1993), Morris and Shin (2003), Frankel, Morris, and Pauzner
+  (2003)) model an additive noise strucutre, but for analytical
+  convenience. This device continues to be used (Szkup and Trevino
+  (2020)), but the literature also records other, more flexible forms of
+  perturbation (eg, Yang (2015)).} Henceforth, variables with a hat are
+estimated with some (possibly non-linear) noise by an investor, each
+with a specific precision \(\tau_i(\cdot)\); for example,
+\(\tau_1(\hat{d}_{21})\) the precision of firm \(1\)'s estimate of
+\(d_{21}\). Continuing with investor \(i=1\) in the example above, the
+game begins with the following information profile:
+
+\[
+\hat{D}^{(1)} = 
+\begin{bmatrix}
+d_{11} & d_{12} \\
+\hat{d}_{21}^{(1)} & \hat{d}_{22}^{(1)}
+\end{bmatrix}
+,
+\hat{S}^{(1)} = 
+\begin{bmatrix}
+s_{11} & s_{12} \\
+\hat{s}_{21}^{(1)} & \hat{s}_{22}^{(1)}
+\end{bmatrix}
+,
+\hat{\theta}^{(1)} = 
+\begin{bmatrix}
+d_{11}s_{11} & d_{12}\hat{s}_{21}^{(1)} \\
+\hat{d}_{21}^{(1)} s_{12} & \hat{d}_{22}^{(1)} \hat{s}_{22}^{(1)}
+\end{bmatrix}.
+\]
+
+The superscript in the hat variables indicates that it is firm \(1\)'s
+signal of the other firm's demand or supply. To avoid cluttered
+notation, this superscript is dropped when equations refer to the
+running \(N=2\) example or when it is clear it refers to a generic firm
+\(i\)'s signal, and will only be used to remove ambiguity.
+
+Given the uncertainty about the actual demand or supply driver of other
+firms, firm \(1\)'s views on \(\tilde{D}, \tilde{S}\) are given by
+Equation~\ref{eq-tildeDS} below:
+
+\begin{equation}\phantomsection\label{eq-tildeDS}{
+\hat{\tilde{D}} = 
+\begin{bmatrix}
+\tilde{d}_{11} & \tilde{d}_{12} \\
+\hat{\tilde{d}}_{21} & \hat{\tilde{d}}_{22}
+\end{bmatrix}
+,
+\hat{\tilde{S}} = 
+\begin{bmatrix}
+\tilde{s}_{11} & \tilde{s}_{12} \\
+\hat{\tilde{s}}_{21} & \hat{\tilde{s}}_{22}
+\end{bmatrix}.
+}\end{equation}
+
+Note that this construction enables a generalisation of the incomplete
+information setting where even the consumption function (including any
+budget constraints) of the other firms are not necessarily known by
+\(i\). The only requirement is that this function be elementwise
+non-decreasing in the payoff. This brings more realism to the model in
+the sense that in the real world, economic agents make decisions without
+fully known how ``deep'' their pockets are, or whether or not they have
+access to other sources of financing, etc. At the same time, this
+construction does not add considerable complexity to the model. the
+disadvantage is that applications where the budget constraint will be
+studied, say in comparative statics would require a more explicit
+specification of the consumption function.
+
+Firm \(1\)'s view on the outcomes and its own expected payoff structure
+reflects the information profile: the demand and supply that firm \(1\)
+has towards other firms, \((d_{1j})_{j=1}^N\) and \((s_{1j})_{j=1}^N\),
+as well as \(1\)'s own actions, \((a_{1j}^d)_{j=1}^N\) and
+\((a_{1j}^s)_{j=1}^N\), are known by 1, whereas other firms' are
+estimated. In the \(N=2\) example:
+
+\begin{equation}\phantomsection\label{eq-iioutcomes}{
+O = 
+\begin{bmatrix}
+-(a_{11}^d t_{11}^d) + (a_{11}^d d_{11} s_{11} a_{11}^s) - (a_{11}^s t_{11}^s) & -(a_{12}^d t_{12}^d) + (a_{12}^d d_{12} \hat{s}_{21} \hat{a}_{21}^s) - (a_{21}^s t_{21}^s)\\
+-(a_{21}^d t_{21}^d) + (a_{21}^d d_{21} s_{12} a_{12}^s) - (a_{21}^s t_{21}^s) & -(a_{22}^d t_{22}^d) + (a_{22}^d d_{22} s_{22} a_{22}^s) - (a_{22}^s t_{22}^s)
+\end{bmatrix}.
+}\end{equation}
+
+Equation~\ref{eq-iioutcomes} underscores the strategic uncertainty about
+firm \(2\)'s demand and supply and also about their actions, since firm
+\(1\) does not know firm \(2\)'s budget constraints, consumption or
+supply form or any other information except the importance of the actual
+payoff to determine a higher chance of a transaction occuring.
+
+Adapting Equation~\ref{eq-firmlevelpayoff} to a scenario where firm
+\(i\) calculates expected payoffs,
+
+\begin{equation}\phantomsection\label{eq-iifirmlevelpayoff}{
+\mathbb{E}[p_i] = a_{ii}^d (d_{ii} s_{ii} a_{ii}^s - t_{ii}^d) + a_{ii}^s (a_{ii}^d d_{ii} s_{ii} - t_{ii}^s) + \sum_{j \in \{1, \dots, N\}\setminus \{i\}} a_{ij}^d (d_{ij} \hat{s}_{ji} \hat{a}_{ji}^s - t_{ij}^d) + a_{ij}^s (\hat{a}_{ji}^d \hat{d}_{ji} s_{ij} - t_{ij}^s)
+}\end{equation}
+
+where the first term correspond to the own actions and
+(self-)transaction values and the second term includes payoffs on which
+firm \(i\) is uncertain. Going forward, to simplify notation collect the
+first term in
+\(p_{ii} = a_{ii}^d (d_{ii} s_{ii} a_{ii}^s - t_{ii}^d) + a_{ii}^s (a_{ii}^d d_{ii} s_{ii} - t_{ii}^s)\).
+To be clear, the decision to demand and supply own transactions is
+jointly determined along with all other alternatives, which are
+uncertain. So the ``known'' terms here must be read as being conditional
+on the received signals \(\hat{D}, \hat{S}\).
+
+Given these monotone dependencies and the uncertainty about the
+consumption function shape for other firms, each firm defines a
+threshold strategy to decide \(a_{i}^d, a_{i}^s\), subject to their own
+constraints. This threshold, which is specific to each firm' demand and
+supply relationships, already incorporates any constraints at the
+firm-level (such as budget limits or technological envelope).
+Importantly, the threshold strategy also applies for own \(i\)-to-\(i\)
+relationships, since they might also be constrained generically even if
+the information for these particular matches is complete, or because of
+the influence of other, estimated, relationships. The bilateral actions
+taken by firm \(i\) will be defined by a pair of thresholds
+\(d_{i}^*, s_{i}^*\). Specifically,
+
+\begin{equation}\phantomsection\label{eq-thresholds}{
+\begin{split}
+a_{ij}^d = \mathbb{1}[\tilde{d}_{ij} \geq d_{i}^*] \\
+a_{ij}^s = \mathbb{1}[\tilde{s}_{ij} \geq s_{i}^*],
+\end{split}
+}\end{equation}
+
+with these thresholds representing the point of indifference for firms.
+Putting together all these elements, the optimal thresholds would then
+each equate the expected payoffs with the action costs, as in:
+
+\begin{equation}\phantomsection\label{eq-indif}{
+\begin{split}
+\mathbb{E}[\hat{p}_{ij} \text{Pr}(s_{ji} \geq \hat{s}_{ji}) &| \hat{d}_{i}^*] = t_{ij}^d \\
+\mathbb{E}[\hat{p}_{ij} \text{Pr}(d_{ij} \geq \hat{d}_{ij}) &| \hat{s}_{j}^*] = t_{ij}^s.
+\end{split}
+}\end{equation}
+
+The left-hand side of both indifference equations comes from the
+assumption held by each firm that all other firms would use threshold
+strategies. Collect the individual thresholds into vectors of firm-level
+demand and supply thresholds, named \(\mathbf{d}^*\) and
+\(\mathbf{s}^*\) respectively. Definition~\ref{def-optmthresh} offers
+more details on these objects.
+
+\begin{definition}[Optimal threshold
+vectors]\protect\hypertarget{def-optmthresh}{}\label{def-optmthresh}
+
+Given demand and supply signals \(\hat{D}\) and \(\hat{S}\) and their
+precisions
+\(\tau = \bigcup_{Z \in \{\hat{D}, \hat{S}\}} (\tau_{ij}(Z))_{i=1, j=1}^N\),
+there are vectors of optimal thresholds for each of demand and supply,
+respectively,
+\(\mathbf{d}^* = (d_i^*(\hat{D}, \hat{S}, \tau))_{i=1}^N \in [0, 1]^N\)
+and
+\(\mathbf{s}^* = (s_i^*(\hat{D}, \hat{S}, \tau))_{i=1}^N \in [0, 1]^N\).
+Each firm \(i\) uses the threshold \(d_i^*\) to evaluate all the
+possibilities for demand and for supply matching, after they have been
+transformed into the \([0, 1]\) domain by the softmax function in
+Equation~\ref{eq-softmaxrow} and Equation~\ref{eq-softmaxcol}. Each pair
+\((d_i^*, s_i^*)\) optimises firm \(i\)'s expected payoff
+\(\sum_{j=1}^N p_(ij)\) subject to its constraints.
+
+\emph{Remark 1.} Higher thresholds for firm \(i\) make it less likely
+that \(i\) will coordinate.
+
+\emph{Remark 2.} For firm \(i\), \(d_i^*\) is not necessarily equal to
+\(s_i^*\), but they can be co-determined within each firm. For example,
+a supermarket firm (which has a low cost of supplying to a broad base of
+potential clients, and expectats that many clients would correspond with
+their demand to its assortiment of products) has a low supply threshold
+\(s_i^*\), but it also must have a low \(d_i^*\) lest it would only
+purchase very specific goods, which would not be fitting for a
+supermarket.
+
+\emph{Remark 3.} For brevity, the term in parenthesis indicating a
+dependence on the demand and supply signals and and on the signal
+precision might be ommited but it should always be understood that these
+vectors are defined with the complete \(\hat{D}\) and \(\hat{S}\)
+matrices.
+
+\emph{Example 1.} Equation~\ref{eq-thresholds} demonstrates the use of
+the optimal threshold in the \(N=2\) example.
+
+\emph{Example 2.} Suppose
+\(\mathbf{d}^{*} = \mathbf{s}^{*} = (0)_{N}*\), ie, both demand and
+supply thresholds are 0 for all firms. In this case, all firms would act
+on their supply and demand, and form connections whenever these match an
+opposing action by counterparty. The possibility of equality as opposed
+to strict inequality (see again Equation~\ref{eq-thresholds}) would make
+firms always act even in cases where their original demand (or supply)
+preferences were \(0\).
+
+\emph{Example 3.} Conversely, if
+\(\mathbf{d}^* = \mathbf{s}^* = (1)_N*\), ie, both demand and supply
+thresholds are 1 for all firms, then no firm would act on their demand
+or supply, except when these are all concentrated in a single bilateral
+relationship.\footnote{I posit informally (but will not further prove or
+  discuss) that such a situation would make the economy degenerate to
+  autarky, since it would lead all firms to place all demand and supply
+  efforts only on themselves expecting other firms to do the same.}
+
+\end{definition}
+
+\subsection{Coordination as a monotone supermodular
+game}\label{coordination-as-a-monotone-supermodular-game}
+
+Now that the optimal thresholds are defined and this coordination stage
+has all the building blocks, it is important to show that the present
+model is a monotone supermodular games (as in Van Zandt and Vives
+(2007)) and then use this fact to present a theorem defining the
+equilibrium for the model so far (with exogenous information precision
+profiles). Supermodular games, introduced by Topkis (1979) and further
+studied by Milgrom and Roberts (1990), various papers by Vives are
+classes of games that rely on monotonicity properties and on the
+existence of strategic complementarities to find equilibria.\footnote{Amir
+  (2005), Vives (2005), Vives (2007) and Vives and Vravosinos (2024) are
+  useful surveys of this literature.}
+
+One specific challenge is to show that the high-dimensional, non-linear
+environment does not interfere with the monotonicity requirement.
+\ldots.. In contrast, Morris, Shin, and Yildiz (2016) offer solutions
+for classes of models that do not respect monotonicity in types.
+
+Based on this connection, Theorem~\ref{thm-optmthresh} establishes their
+existence and uniqueness.
+
+\begin{theorem}[Existence and uniqueness of optimal
+thresholds]\protect\hypertarget{thm-optmthresh}{}\label{thm-optmthresh}
+
+There exists precision configurations \(\tau^*\) for which a unique
+Bayesian Nash equilibrium surviving iterated deletion of strictly
+dominated strategies exist, with firms using thresholds
+\(\mathbf{d}^*(\tau_{ij}(\hat{D}, \hat{S}))\) and
+\(\mathbf{s}^*(\tau_{ij}(\hat{D}, \hat{S}))\) to decide on bilateral
+actions.
+
+\end{theorem}
+
+\begin{proof}
+(Under construction) This proof is based on showing that the game is a
+monotone supermodular game, as in Van Zandt and Vives (2007), and use
+that result to show there is an equilibrium (see definitions
+Definition~\ref{def-supermodular} and
+Definition~\ref{def-monsupermodular} in the Annex). From Example
+2.6.2(a) in Topkis (1998), the supermodularity of the payoff \(\pi_i\)
+on own actions \(a_{ij}^{z \in \{d, s\}}\) comes from the fact that it
+is a totally ordered set. The supermodularity (increasing differences)
+on other firms' actions is demonstrated below. Writing
+\(\pi_i((a_i^d, a_i^s),(a_{-i}^d, a_{-i}^s), \theta)\) to represent
+\(i\)'s payoff when it takes actions \(a_i^d, a_i^s\), other players
+take actions \(a_{-i}^d, a_{-i}^s\) and the demand and supply shocks are
+summarised in \(\theta\), then strategic complementarity in others'
+actions entails
+\(\pi_i((1,1), (0,0), \theta) - \pi_i((0,0), (0,0), \theta) \leq \pi_i((1,1), (1,1), \theta) - \pi_i((0,0), (1,1), \theta)\):
+
+\[
+\sum_{j=1}^N -t_{ij}^d -t_{ij}^s \leq \sum_{j=1}^N \theta_{ij} + \theta_{ji} - t_{ij}^d - t_{ij}^s,
+\]
+
+since all elements of \(\theta\) are non-negative.
+
+The same argument holds for each of the demand and supply actions
+separately, also when crossed with counterparties' supply or demand
+actions.
+\end{proof}
+
+Theorem~\ref{thm-optmthresh} establishes that the firms in the economy
+reach an equilibrium.
+
+\subsection{Endogenous information
+acquisition}\label{endogenous-information-acquisition-1}
+
+This section now expands the theme from the previous one, incorporating
+a prior stage where all firms are able to negotiate with firms that sell
+information technology. The possibility that firms endogenously choose
+the level of information to address the strategic uncertainty has been
+shown to change equilibrium selection both in theory and in experimental
+settings. For example, Szkup and Trevino (2024) find that agents tend to
+select themselves more by the amount of information acquired than by the
+investment decisions at a coordination phase, compared to the same model
+but with exogenous information precision (Szkup and Trevino (2020)).
+
+The literature on endogenous information acquisition is vast. Amir and
+Lazzati (2016)\ldots. In a beauty-contest setting, Myatt and Wallace
+(2012) study allocation of attention to information and find that the
+degree of strategic complementarity is negatively related to the number
+of signals watched by individuals, who rely increasingly in a public
+signal. Szkup and Trevino (2024) find that players subjectively select
+different levels of information, beyond rationalisable choiced.
+
+Related papers show that firm investment in AI is heterogenous and has
+wide-ranging implications for the firm. For example, firms investing
+more in AI usage tend to reshape their labour composition and
+organisation (Babina et al. (2023)), indicating the firm is positioning
+itself to better serve existing markets (concentrating more their
+\(s_j\) to better match latent demand \(d_{ij}\)) or to acquire new,
+underserved markets. In fact, empirical evidence points in this
+direction (Babina et al. (2024)).
+
+\subsection{Interpretation}\label{sec-interpretation}
+
+\subsubsection{Types of agents}\label{types-of-agents}
+
+The economic agents, described above as ``firms'', but this description
+is more general. For example, if \(x_i\) is a vector of characteristics
+of each \(i\), which do not have to be unique, then one element of the
+vector \(x_i\) can represent the industry or the location of \(i\). This
+would already allow the construction of metrics of interest to
+applications that focus on certain subsets of firms, for example. One
+interesting application could be for example to set that firms whose
+characteristic vector include them in the ``retail'' sector would tend
+to try to match a much broader subset of agents then specialised firms
+in high-end supply chains, which usually have only a few clients.
+
+In fact, the entities can be more generally taken to be both firms and
+natural persons; even one or more government entities could be economic
+agents. As long as \(x_i\) contains enough information to differentiate
+them, it is possible to pool together all sorts of economic agents in
+this economy if the theoretical or empirical application so requires. Of
+course, constraints (and interpretation) would need to be well-thought
+if the space of individuals encompasses such rich representations. For
+example, if some \(i\) are natural persons, then a reasonable constraint
+to impose of them that most firms will not have is that they will
+``sell'' their product (labour) to only one firm. Or, for those \(i\)
+that are government entities, the product that they ``sell'' are
+certificates of paid taxes (naturally, against proceeds that are
+interpreted as tax) while their purchases are the government
+expenditures.
+
+\subsubsection{Within-agent interaction}\label{within-agent-interaction}
+
+An agent might prefer to demand its own product (think of Apple
+employees using Macbooks and iPhones) and also might prefer to sell to
+itself: for example, if demand for a product is weak it might end up
+building up stock.
+
+\subsubsection{State of the economy}\label{state-of-the-economy}
+
+Similar to Angeletos and Lian (2016) (see section 3.1), in this model
+the state of the economy is seen as the distribution of actions
+throughout the economy. However, with this model it is possible to go
+one step further and construct different subsets and aggregations of the
+economy. For example, the complete economy payoff is
+\(\sum_{i=1}^N \sum_{j=1}^N p_{ij}\), while wages are
+\(\sum_{i=1}^N \sum_{j \in \{\text{Natural persons}\}} p_{ij}\). Labour
+productivity is given by
+\(\sum_{i=1}^N \sum_{j=1}^N p_{ij} / \sum_{i=1}^N \sum_{j \in \{\text{Natural persons}\}} J_{ij}\),
+while cost efficiency of the economy is
+\(\sum_{z \in \{D, S\}}\sum_{i=1}^N \sum_{j=1}^N t_{ij}^z a_{ij}^z\).
+Firm failures result from counting all the firms for whom the net payoff
+is negative.
+
+\subsubsection{Frictions}\label{frictions}
+
+In this model, output gaps are explained by lack of coordination from
+incomplete information. A similar friction was introduced by Diamond
+(1982), who add trade (or more generally, search) frictions in settings
+where multiple people must transact simultaneously and there is no
+Walrasian auctioneer to ensure the market clears frictionless. But in
+contrast to that paper, the frictions in the current model all come from
+the necessity of anticipating the demand and supply of other agents.
+
+\section{Application: effects of artificial
+intelligence}\label{application-effects-of-artificial-intelligence}
+
+This model allows the study of different channels by which AI might
+impact macroeconomic outcomes. These are:
+
+\begin{itemize}
+\item
+  \textbf{Improving the precision of economic signals.} \(\tau_{ij}\)
+\item
+  \textbf{Increasing product innovation.}
+\item
+  \textbf{Lowering the costs associated with demanding or supplying
+  specific products.} \(T^d, T^s\) Allows a greater number of bilateral
+  relationships to take place.
+\item
+  \textbf{Increasing labour automation.} This case requires the
+  inclusion of agents that span both firms and natural persons.
+\end{itemize}
+
+\subsection{AI improving signal
+precision}\label{ai-improving-signal-precision}
+
+\subsection{AI increases product
+innovation}\label{ai-increases-product-innovation}
+
+Babina et al. (2024) show that greater investment in AI leads to
+enhanced product innovation in firms. They find that this effect leads
+to boosted growth, contributing to concentration and to the growth of
+superstar firms.
+
+\subsection{AI lowering costs}\label{ai-lowering-costs}
+
+The costs incurred by firm \(i\) to demand goods are broken down as
+\(t_{ij}^d = t_0 + t_i + \omega_{ij} \geq 0\), with a similar definition
+for supply cost considerations.
+
+\subsection{AI increasing labour
+automation}\label{ai-increasing-labour-automation}
+
+\section{Dynamic setting}\label{dynamic-setting}
+
+Generally speaking, equilibria in monotone strategies in dynamic
+settings are more restrictive than in the static version, as they
+require monotone best replies(Mensch (2020)).
+
+\section{(Tentative) conclusions}\label{tentative-conclusions}
+
+The direct use of lattice-theoretical tools in macroeconomics has a rich
+tradition even if it does not currently inform mainstream models. But as
+the focus of policymakers shifts from representative agents to
+understanding heterogeneity and microfounding models, and especially as
+the way agents acquire and process their information sets to interact
+with other agents under strategic complementarity settings, supermodular
+game analysis might offer insights in macroeconomics as it has in
+industrial organisation, microeconomics and other fields (Amir (2005),
+Amir (2018)). Supermodular analysis is based on the intutive insight
+that if an objective function to be maximised reacts in a complementary
+way between its endogenous and exogenous inputs, then the optimal value
+of the endogenous variables increases with the exogenous values. The
+fact that these methods dispense with seemingly superfluous assumptions
+eg on functional form of utility functions and instead rely on
+monotonicity constraints further lends it flexibility even for
+non-linear analysis.
+
+As for compatitive statics related to AI, AI is a palpable
+transformation to information processing and use, promising deep changes
+even in the societal structure. Even before the current wave of public
+awareness after the release of ChatGPT in November 2022, Korinek and
+Stiglitz (2018) pointed to the potential effects of AI on the economy as
+a whole.
+
+But for all its importance, AI is not the only information-relevant
+transformation. Over the last decades, innovations such as the
+long-distance telephone, internet, and early machine learning models all
+have increased the capabilities of transforming information. And in the
+other direction, greater awareness and effective privacy at the consumer
+level has driven significant economic impacts (Doerr et al. (2023),
+Aridor and Che (2024)). A flexible model is needed to study these
+wide-ranging transformation.
+
+\section{References}\label{references}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-acemoglu2024simple}
+Acemoglu, Daron. 2024. {``The Simple Macroeconomics of AI.''} National
+Bureau of Economic Research.
+
+\bibitem[\citeproctext]{ref-amir2005supermodularity}
+Amir, Rabah. 2005. {``Supermodularity and Complementarity in Economics:
+An Elementary Survey.''} \emph{Southern Economic Journal} 71 (3):
+636--60.
+
+\bibitem[\citeproctext]{ref-amir2018supermodularity}
+---------. 2018. {``Supermodularity and Monotone Methods in
+Economics.''} \emph{Economic Theory}. Springer.
+
+\bibitem[\citeproctext]{ref-AMIR2016684}
+Amir, Rabah, and Natalia Lazzati. 2016. {``Endogenous Information
+Acquisition in Bayesian Games with Strategic Complementarities.''}
+\emph{Journal of Economic Theory} 163: 684--98.
+https://doi.org/\url{https://doi.org/10.1016/j.jet.2016.03.005}.
+
+\bibitem[\citeproctext]{ref-angeletos2016incomplete}
+Angeletos, G-M, and Chen Lian. 2016. {``Incomplete Information in
+Macroeconomics: Accommodating Frictions in Coordination.''} In
+\emph{Handbook of Macroeconomics}, 2:1065--1240. Elsevier.
+
+\bibitem[\citeproctext]{ref-aridor2024privacy}
+Aridor, Guy, and Yeon-Koo Che. 2024. {``Privacy Regulation and Targeted
+Advertising: Evidence from Apple's App Tracking Transparency.''}
+
+\bibitem[\citeproctext]{ref-babina2023firm}
+Babina, Tania, Anastassia Fedyk, Alex X He, and James Hodson. 2023.
+\emph{Firm Investments in Artificial Intelligence Technologies and
+Changes in Workforce Composition}. Vol. 31325. National Bureau of
+Economic Research.
+
+\bibitem[\citeproctext]{ref-babina2024artificial}
+Babina, Tania, Anastassia Fedyk, Alex He, and James Hodson. 2024.
+{``Artificial Intelligence, Firm Growth, and Product Innovation.''}
+\emph{Journal of Financial Economics} 151: 103745.
+
+\bibitem[\citeproctext]{ref-baqaee2018macroeconomics}
+Baqaee, David Rezza, and Emmanuel Farhi. 2018. {``Macroeconomics with
+Heterogeneous Agents and Input-Output Networks.''} National Bureau of
+Economic Research.
+
+\bibitem[\citeproctext]{ref-baqaee2019jeea}
+---------. 2019. {``Jeea-Fbbva Lecture 2018: The Microeconomic
+Foundations of Aggregate Production Functions.''} \emph{Journal of the
+European Economic Association} 17 (5): 1337--92.
+
+\bibitem[\citeproctext]{ref-carlsson1993global}
+Carlsson, Hans, and Eric Van Damme. 1993. {``Global Games and
+Equilibrium Selection.''} \emph{Econometrica: Journal of the Econometric
+Society}, 989--1018.
+
+\bibitem[\citeproctext]{ref-cooper1988coordinating}
+Cooper, Russell, and Andrew John. 1988. {``Coordinating Coordination
+Failures in Keynesian Models.''} \emph{The Quarterly Journal of
+Economics} 103 (3): 441--63.
+
+\bibitem[\citeproctext]{ref-diamond1982aggregate}
+Diamond, Peter A. 1982. {``Aggregate Demand Management in Search
+Equilibrium.''} \emph{Journal of Political Economy} 90 (5): 881--94.
+
+\bibitem[\citeproctext]{ref-doerr2023privacy}
+Doerr, Sebastian, Leonardo Gambacorta, Luigi Guiso, and Marina Sanchez
+del Villar. 2023. {``Privacy Regulation and Fintech Lending.''}
+\emph{Available at SSRN 4353798}.
+
+\bibitem[\citeproctext]{ref-farboodi2020long}
+Farboodi, Maryam, and Laura Veldkamp. 2020. {``Long-Run Growth of
+Financial Data Technology.''} \emph{American Economic Review} 110 (8):
+2485--2523.
+
+\bibitem[\citeproctext]{ref-Fernandez2022}
+Fernandez, Marcelo Ariel, Kirill Rudov, and Leeat Yariv. 2022.
+{``Centralized Matching with Incomplete Information.''} \emph{American
+Economic Review: Insights} 4 (1): 18--33.
+\url{https://doi.org/10.1257/aeri.20210123}.
+
+\bibitem[\citeproctext]{ref-frankel2003equilibrium}
+Frankel, David M, Stephen Morris, and Ady Pauzner. 2003. {``Equilibrium
+Selection in Global Games with Strategic Complementarities.''}
+\emph{Journal of Economic Theory} 108 (1): 1--44.
+
+\bibitem[\citeproctext]{ref-hellwig2009knowing}
+Hellwig, Christian, and Laura Veldkamp. 2009. {``Knowing What Others
+Know: Coordination Motives in Information Acquisition.''} \emph{The
+Review of Economic Studies} 76 (1): 223--51.
+
+\bibitem[\citeproctext]{ref-korinek2018artificial}
+Korinek, Anton, and Joseph E Stiglitz. 2018. {``Artificial Intelligence
+and Its Implications for Income Distribution and Unemployment.''} In
+\emph{The Economics of Artificial Intelligence: An Agenda}, 349--90.
+University of Chicago Press.
+
+\bibitem[\citeproctext]{ref-mensch2020existence}
+Mensch, Jeffrey. 2020. {``On the Existence of Monotone Pure-Strategy
+Perfect Bayesian Equilibrium in Games with Complementarities.''}
+\emph{Journal of Economic Theory} 187: 105026.
+
+\bibitem[\citeproctext]{ref-milgrom1990rationalizability}
+Milgrom, Paul, and John Roberts. 1990. {``Rationalizability, Learning,
+and Equilibrium in Games with Strategic Complementarities.''}
+\emph{Econometrica: Journal of the Econometric Society}, 1255--77.
+
+\bibitem[\citeproctext]{ref-morris2003global}
+Morris, Stephen, and Hyun Song Shin. 2003. {``Global Games: Theory and
+Applications.''} In \emph{Advances in Economics and Econometrics: Theory
+and Applications, Eighth World Congress, Volume 1}, 56--114. Cambridge
+University Press.
+
+\bibitem[\citeproctext]{ref-morris2016common}
+Morris, Stephen, Hyun Song Shin, and Muhamet Yildiz. 2016. {``Common
+Belief Foundations of Global Games.''} \emph{Journal of Economic Theory}
+163: 826--48.
+
+\bibitem[\citeproctext]{ref-myatt2012endogenous}
+Myatt, David P, and Chris Wallace. 2012. {``Endogenous Information
+Acquisition in Coordination Games.''} \emph{The Review of Economic
+Studies} 79 (1): 340--74.
+
+\bibitem[\citeproctext]{ref-roth2007repugnance}
+Roth, Alvin E. 2007. {``Repugnance as a Constraint on Markets.''}
+\emph{Journal of Economic Perspectives} 21 (3): 37--58.
+
+\bibitem[\citeproctext]{ref-szkup2020sentiments}
+Szkup, Michal, and Isabel Trevino. 2020. {``Sentiments, Strategic
+Uncertainty, and Information Structures in Coordination Games.''}
+\emph{Games and Economic Behavior} 124: 534--53.
+
+\bibitem[\citeproctext]{ref-szkup_trevino_2024}
+---------. 2024. {``Selection Through Information Acquisition in
+Coordination Games.''}
+
+\bibitem[\citeproctext]{ref-tarski1955lattice}
+Tarski, Alfred. 1955. {``A Lattice-Theoretical Fixpoint Theorem and Its
+Applications.''} \emph{Pacific Journal of Mathematics} 5: 285--309.
+
+\bibitem[\citeproctext]{ref-topkis1979equilibrium}
+Topkis, Donald M. 1979. {``Equilibrium Points in Nonzero-Sum n-Person
+Submodular Games.''} \emph{Siam Journal on Control and Optimization} 17
+(6): 773--87.
+
+\bibitem[\citeproctext]{ref-topkis1998supermodularity}
+---------. 1998. \emph{Supermodularity and Complementarity}. Princeton
+university press.
+
+\bibitem[\citeproctext]{ref-van2007monotone}
+Van Zandt, Timothy, and Xavier Vives. 2007. {``Monotone Equilibria in
+Bayesian Games of Strategic Complementarities.''} \emph{Journal of
+Economic Theory} 134 (1): 339--60.
+
+\bibitem[\citeproctext]{ref-vives2005complementarities}
+Vives, Xavier. 2005. {``Complementarities and Games: New
+Developments.''} \emph{Journal of Economic Literature} 43 (2): 437--79.
+
+\bibitem[\citeproctext]{ref-vives2007supermodularity}
+---------. 2007. {``Supermodularity and Supermodular Games.''}
+\emph{Occasional Paper}, no. 07/18.
+
+\bibitem[\citeproctext]{ref-vives2024strategic}
+Vives, Xavier, and Orestis Vravosinos. 2024. {``Strategic
+Complementarity in Games.''} \emph{Journal of Mathematical Economics},
+103005.
+
+\bibitem[\citeproctext]{ref-yang2015coordination}
+Yang, Ming. 2015. {``Coordination with Flexible Information
+Acquisition.''} \emph{Journal of Economic Theory} 158: 721--38.
+
+\end{CSLReferences}
+
+\newpage
+
+\section*{Appendix: basic definitions on supermodular
+games}\label{appendix-basic-definitions-on-supermodular-games}
+\addcontentsline{toc}{section}{Appendix: basic definitions on
+supermodular games}
+
+This appendix contains mathematical definitions that are helpful to
+support the equilibrium analyses, but that might not be of interest to
+all readers. It starts by defining lattice-theoretical objects and then
+describes the supermodular games. It then restates a useful fixed point
+theorem on lattices that is the basis of equilibria search in many
+applications.
+
+A key result underlying the usefulness of supermodular games is due to
+Milgrom and Roberts (1990), who show (in their Theorem 5) that the set
+of strategy profiles surviving iterated deletion of strongly dominated
+strategies has a maximum and a minimum element, and both are Nash
+equilibria.
+
+\begin{definition}[Lattice]\protect\hypertarget{def-lattice}{}\label{def-lattice}
+
+\ldots{}
+
+\end{definition}
+
+\begin{theorem}[Tarski (1955) fix
+point]\protect\hypertarget{thm-fixedpoint}{}\label{thm-fixedpoint}
+
+\ldots{}
+
+\end{theorem}
+
+\begin{definition}[Supermodular games (Vives
+(2007))]\protect\hypertarget{def-supermodular}{}\label{def-supermodular}
+
+Let players \(i= 1, \dots, N\) each have an action set \(A_i \in A\),
+with the actual action taken by \(i\) denoted as \(a_i \in A\) and by
+all the other players, \(a_{-i}\). \(A_i\) have the property of
+component-wise order. The payoffs of each player are a continuous
+mapping \(\pi_i : A^N \to \mathbb{R}\). A game \(G = (i, A_i, p_i)\) is
+supermodular if:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\pi_i\) is supermodular in \(a_i\) for fixed \(a_{-i}\), and
+\item
+  \(\pi_i\) displays increasing differences in \((a_i, a_{-i})\).
+\end{enumerate}
+
+\emph{Remark 1.} Due to the strategic complementarities, the best
+responses in a supermodular game are monotone increasing, regardless of
+whether \(\pi_i\) is quasiconcave in \(a_i\).
+
+\end{definition}
+
+\begin{definition}[Monotone supermodular games (Van Zandt and Vives
+(2007))]\protect\hypertarget{def-monsupermodular}{}\label{def-monsupermodular}
+
+In addition to the criteria in Definition~\ref{def-supermodular},
+monotone supermodular games are\ldots{}
+
+\end{definition}
+
+
+
+\end{document}
