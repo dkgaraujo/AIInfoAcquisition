@@ -155,10 +155,10 @@
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
-\theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[section]
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -227,10 +227,35 @@ codes: (D82, G14).
 
 \section{Introduction}\label{introduction}
 
-This paper microfounds from individual-level demand and supply drivers.
-The goal of this model is to offer a flexible alternative to
+This paper microfounds the state of the economy from individual-level
+demand and supply drivers, based on characteristics of each agent and on
+an stochastic component, and on strategic complmentarities between pairs
+of agents. The goal of this model is to offer a flexible alternative to
 macroeconomic models that is built on the multiple bilateral strategic
-interactions under incomplete information.
+interactions under incomplete information, and let the interaction graph
+and more broadly, economic activity, follow from these two basic
+building blocks of supply and demand drivers and strategic bilateral
+interactions.
+
+The model allows a natural breakdown of each of demand or supply
+contributions to economic activity into a portion that is due to
+fundamentals and another one due to strategic uncertainty. For example,
+part of supply of labour might be associated to fundamentals such as
+demographics and expected returns to education, but a part of these
+dynamics can also be associated to the evolution of expected (by
+households) demand of labour by firms; this can decrease if households
+think firms will automate more, eg after the advent of popular ChatGPT
+in late 2022. By the same token, firms' demand for labour reflects
+fundamentals such as existing technology but also how much they expect
+households to supply labour. If firms think households think firms would
+automate more, then firms could think households would anticipate this
+and (given certain returns to education) build up intellectual capital
+instead of going into the labour market, and then firms could thus
+choose to automate because they anticipate lower supply of labour.
+Following the celebrated result in the global games literature (Carlsson
+and Van Damme (1993), Morris and Shin (2003)), reasoning on higher-order
+beliefs can be summarised by simpler and more effective forms of
+reasoning such as threshold strategies.
 
 One application of this model is to shed light on the role of AI as a
 factor in economic activity. The model is flexible enough to be fit to
@@ -250,7 +275,12 @@ functions and matching technologies in a imperfectly competitive
 heterogenous economy, but their model does not feature incomplete
 information. More recently, Fernandez, Rudov, and Yariv (2022) model A
 broad review of the role of incomplete information in macroeconomic
-settings is provided at Angeletos and Lian (2016).
+settings is provided at Angeletos and Lian (2016). Separately, Galeotti
+et al. (2010) extend incomplete information to networks, modelling
+uncertainty about the identity and count of neighbours in a network.
+Supermodularity theory is also a flexible way to associate uncertainty
+about the states of the world with the concept of risk aversion (Quiggin
+and Chambers (2006)).
 
 \subsubsection{Endogenous information
 acquisition}\label{endogenous-information-acquisition}
@@ -759,36 +789,6 @@ actions.
 Theorem~\ref{thm-optmthresh} establishes that the firms in the economy
 reach an equilibrium.
 
-\subsection{Endogenous information
-acquisition}\label{endogenous-information-acquisition-1}
-
-This section now expands the theme from the previous one, incorporating
-a prior stage where all firms are able to negotiate with firms that sell
-information technology. The possibility that firms endogenously choose
-the level of information to address the strategic uncertainty has been
-shown to change equilibrium selection both in theory and in experimental
-settings. For example, Szkup and Trevino (2024) find that agents tend to
-select themselves more by the amount of information acquired than by the
-investment decisions at a coordination phase, compared to the same model
-but with exogenous information precision (Szkup and Trevino (2020)).
-
-The literature on endogenous information acquisition is vast. Amir and
-Lazzati (2016)\ldots. In a beauty-contest setting, Myatt and Wallace
-(2012) study allocation of attention to information and find that the
-degree of strategic complementarity is negatively related to the number
-of signals watched by individuals, who rely increasingly in a public
-signal. Szkup and Trevino (2024) find that players subjectively select
-different levels of information, beyond rationalisable choiced.
-
-Related papers show that firm investment in AI is heterogenous and has
-wide-ranging implications for the firm. For example, firms investing
-more in AI usage tend to reshape their labour composition and
-organisation (Babina et al. (2023)), indicating the firm is positioning
-itself to better serve existing markets (concentrating more their
-\(s_j\) to better match latent demand \(d_{ij}\)) or to acquire new,
-underserved markets. In fact, empirical evidence points in this
-direction (Babina et al. (2024)).
-
 \subsection{Interpretation}\label{sec-interpretation}
 
 \subsubsection{Types of agents}\label{types-of-agents}
@@ -852,8 +852,48 @@ Walrasian auctioneer to ensure the market clears frictionless. But in
 contrast to that paper, the frictions in the current model all come from
 the necessity of anticipating the demand and supply of other agents.
 
-\section{Application: effects of artificial
-intelligence}\label{application-effects-of-artificial-intelligence}
+\subsection{Endogenous information
+acquisition}\label{endogenous-information-acquisition-1}
+
+This section now expands the theme from the previous one, incorporating
+a prior stage where all firms are able to negotiate with firms that sell
+information technology. The possibility that firms endogenously choose
+the level of information to address the strategic uncertainty has been
+shown to change equilibrium selection both in theory and in experimental
+settings. For example, Szkup and Trevino (2024) find that agents tend to
+select themselves more by the amount of information acquired than by the
+investment decisions at a coordination phase, compared to the same model
+but with exogenous information precision (Szkup and Trevino (2020)).
+
+The literature on endogenous information acquisition is vast (see for
+example Amir and Lazzati (2016), Colombo, Femminis, and Pavan (2014),
+Szkup and Trevino (2015), Yang (2015) and others). In a beauty-contest
+setting, Myatt and Wallace (2012) study allocation of attention to
+information and find that the degree of strategic complementarity is
+negatively related to the number of signals watched by individuals, who
+rely increasingly in a public signal. Szkup and Trevino (2024) find that
+players subjectively select different levels of information, beyond
+rationalisable choiced.
+
+Particularly important results in endogenous information aquisition are
+due to Colombo, Femminis, and Pavan (2014).
+
+An important application of endogenous information aquisition is the
+study of breakthrough improvements in information processing technology,
+in particular more recently the role of AI in coordination amongst
+agents. In fact, related papers show that firm investment in AI is
+heterogenous and has wide-ranging implications for the firm. For
+example, firms investing more in AI usage tend to reshape their labour
+composition and organisation (Babina et al. (2023)), indicating the firm
+is positioning itself to better serve existing markets (concentrating
+more their \(s_j\) to better match latent demand \(d_{ij}\)) or to
+acquire new, underserved markets, as reinforced by empirical evidence
+(Babina et al. (2024)). After discussing how the present model changes
+in response to endogenous information aquisition, this paper uses these
+results to elaborate on the influence of AI on the economy in
+Section~\ref{sec-AI}.
+
+\section{Application: effects of artificial intelligence}\label{sec-AI}
 
 This model allows the study of different channels by which AI might
 impact macroeconomic outcomes. These are:
@@ -892,11 +932,15 @@ for supply cost considerations.
 \subsection{AI increasing labour
 automation}\label{ai-increasing-labour-automation}
 
-\section{Dynamic setting}\label{dynamic-setting}
+\section{Dynamic setting (under
+development)}\label{dynamic-setting-under-development}
 
 Generally speaking, equilibria in monotone strategies in dynamic
 settings are more restrictive than in the static version, as they
 require monotone best replies(Mensch (2020)).
+
+Previous work exploring coordination in dynamic settings include Amir
+(1996) and Datta, Reffett, and Woźny (2018).
 
 \section{(Tentative) conclusions}\label{tentative-conclusions}
 
@@ -941,10 +985,14 @@ wide-ranging transformation.
 Acemoglu, Daron. 2024. {``The Simple Macroeconomics of AI.''} National
 Bureau of Economic Research.
 
+\bibitem[\citeproctext]{ref-amir1996continuous}
+Amir, Rabah. 1996. {``Continuous Stochastic Games of Capital
+Accumulation with Convex Transitions.''} \emph{Games and Economic
+Behavior} 15 (2): 111--31.
+
 \bibitem[\citeproctext]{ref-amir2005supermodularity}
-Amir, Rabah. 2005. {``Supermodularity and Complementarity in Economics:
-An Elementary Survey.''} \emph{Southern Economic Journal} 71 (3):
-636--60.
+---------. 2005. {``Supermodularity and Complementarity in Economics: An
+Elementary Survey.''} \emph{Southern Economic Journal} 71 (3): 636--60.
 
 \bibitem[\citeproctext]{ref-amir2018supermodularity}
 ---------. 2018. {``Supermodularity and Monotone Methods in
@@ -991,10 +1039,20 @@ Carlsson, Hans, and Eric Van Damme. 1993. {``Global Games and
 Equilibrium Selection.''} \emph{Econometrica: Journal of the Econometric
 Society}, 989--1018.
 
+\bibitem[\citeproctext]{ref-colombo2014information}
+Colombo, Luca, Gianluca Femminis, and Alessandro Pavan. 2014.
+{``Information Acquisition and Welfare.''} \emph{The Review of Economic
+Studies} 81 (4): 1438--83.
+
 \bibitem[\citeproctext]{ref-cooper1988coordinating}
 Cooper, Russell, and Andrew John. 1988. {``Coordinating Coordination
 Failures in Keynesian Models.''} \emph{The Quarterly Journal of
 Economics} 103 (3): 441--63.
+
+\bibitem[\citeproctext]{ref-datta2018comparing}
+Datta, Manjira, Kevin Reffett, and Łukasz Woźny. 2018. {``Comparing
+Recursive Equilibrium in Economies with Dynamic Complementarities and
+Indeterminacy.''} \emph{Economic Theory} 66: 593--626.
 
 \bibitem[\citeproctext]{ref-diamond1982aggregate}
 Diamond, Peter A. 1982. {``Aggregate Demand Management in Search
@@ -1020,6 +1078,11 @@ Economic Review: Insights} 4 (1): 18--33.
 Frankel, David M, Stephen Morris, and Ady Pauzner. 2003. {``Equilibrium
 Selection in Global Games with Strategic Complementarities.''}
 \emph{Journal of Economic Theory} 108 (1): 1--44.
+
+\bibitem[\citeproctext]{ref-galeotti2010network}
+Galeotti, Andrea, Sanjeev Goyal, Matthew O Jackson, Fernando
+Vega-Redondo, and Leeat Yariv. 2010. {``Network Games.''} \emph{The
+Review of Economic Studies} 77 (1): 218--44.
 
 \bibitem[\citeproctext]{ref-hellwig2009knowing}
 Hellwig, Christian, and Laura Veldkamp. 2009. {``Knowing What Others
@@ -1058,14 +1121,23 @@ Myatt, David P, and Chris Wallace. 2012. {``Endogenous Information
 Acquisition in Coordination Games.''} \emph{The Review of Economic
 Studies} 79 (1): 340--74.
 
+\bibitem[\citeproctext]{ref-quiggin2006supermodularity}
+Quiggin, John, and Robert G Chambers. 2006. {``Supermodularity and Risk
+Aversion.''} \emph{Mathematical Social Sciences} 52 (1): 1--14.
+
 \bibitem[\citeproctext]{ref-roth2007repugnance}
 Roth, Alvin E. 2007. {``Repugnance as a Constraint on Markets.''}
 \emph{Journal of Economic Perspectives} 21 (3): 37--58.
 
+\bibitem[\citeproctext]{ref-szkup2015information}
+Szkup, Michal, and Isabel Trevino. 2015. {``Information Acquisition in
+Global Games of Regime Change.''} \emph{Journal of Economic Theory} 160:
+387--428.
+
 \bibitem[\citeproctext]{ref-szkup2020sentiments}
-Szkup, Michal, and Isabel Trevino. 2020. {``Sentiments, Strategic
-Uncertainty, and Information Structures in Coordination Games.''}
-\emph{Games and Economic Behavior} 124: 534--53.
+---------. 2020. {``Sentiments, Strategic Uncertainty, and Information
+Structures in Coordination Games.''} \emph{Games and Economic Behavior}
+124: 534--53.
 
 \bibitem[\citeproctext]{ref-szkup_trevino_2024}
 ---------. 2024. {``Selection Through Information Acquisition in
@@ -1169,7 +1241,25 @@ whether \(\pi_i\) is quasiconcave in \(a_i\).
 (2007))]\protect\hypertarget{def-monsupermodular}{}\label{def-monsupermodular}
 
 In addition to the criteria in Definition~\ref{def-supermodular},
-monotone supermodular games are\ldots{}
+monotone supermodular games assume that each player's interim beliefs
+\(p_i : T_i \to M_{-i}\) representing \(i\)'s set of probability
+measures of the other players' types are increasing in first-order
+stochastic dominance.
+
+\emph{Remark 1.} If these criteria are met, the game has a greatest and
+a least pure strategy Bayesian Nash equilibria.
+
+\emph{Remark 2.} A first-order shift in the interim beliefs leads to
+increases in these greatest and least equilibria.
+
+\end{definition}
+
+\begin{definition}[Bayesian Nash equilibrium
+(BNE)]\protect\hypertarget{def-BNE}{}\label{def-BNE}
+
+A BNE is a strategy profile such that each player \(i\) and their type
+\(\theta_i\) chooses a best response to the strategy profile of other
+players.
 
 \end{definition}
 
