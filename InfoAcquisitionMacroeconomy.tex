@@ -155,10 +155,10 @@
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -794,15 +794,15 @@ reach an equilibrium.
 \subsubsection{Types of agents}\label{types-of-agents}
 
 The economic agents, described above as ``firms'', but this description
-is more general. For example, if \(x_i\) is a vector of characteristics
-of each \(i\), which do not have to be unique, then one element of the
-vector \(x_i\) can represent the industry or the location of \(i\). This
-would already allow the construction of metrics of interest to
-applications that focus on certain subsets of firms, for example. One
-interesting application could be for example to set that firms whose
-characteristic vector include them in the ``retail'' sector would tend
-to try to match a much broader subset of agents then specialised firms
-in high-end supply chains, which usually have only a few clients.
+is more general. Let \(x_i\) be a vector of characteristics of each
+\(i\), which do not have to be unique, then one element of the vector
+\(x_i\) can represent the industry or the location of \(i\). This would
+already allow the construction of metrics of interest to applications
+that focus on certain subsets of firms, for example. One interesting
+application could be for example to set that firms whose characteristic
+vector include them in the ``retail'' sector would tend to try to match
+a much broader subset of agents then specialised firms in high-end
+supply chains, which usually have only a few clients.
 
 In fact, the entities can be more generally taken to be both firms and
 natural persons; even one or more government entities could be economic
@@ -893,10 +893,27 @@ in response to endogenous information aquisition, this paper uses these
 results to elaborate on the influence of AI on the economy in
 Section~\ref{sec-AI}.
 
+\section{Fundamental and strategic demand and supply
+shocks}\label{fundamental-and-strategic-demand-and-supply-shocks}
+
+Modelling the economy directly from agent-level demand and supply
+drivers and the incomplete information towards other agents' drivers and
+actions cutoffs yields the useful property that each of demand or supply
+shocks can be broken down into (a) a fundamental-driven component and
+(b) a portion that responds to strategic uncertainty. This distinction
+is an important addition to the traditional demand-supply breakdown in
+macroeconomics, especially when informational aspects can matter for
+aggregate outcomes.
+
+Consider again each element of the demand and supply matrices in
+Equation~\ref{eq-tildeDS}; call \(Z \in \{D, S\}\) and \(z_{ij}\) each
+of the matrices and their elements. \$\$
+
 \section{Application: effects of artificial intelligence}\label{sec-AI}
 
-This model allows the study of different channels by which AI might
-impact macroeconomic outcomes. These are:
+This model allows the simultaneous study of different channels by which
+AI might impact macroeconomic outcomes, including whether they interact
+with each other. These are:
 
 \begin{itemize}
 \item
@@ -904,12 +921,15 @@ impact macroeconomic outcomes. These are:
 \item
   \textbf{Increasing product innovation.}
 \item
-  \textbf{Lowering the costs associated with demanding or supplying
-  specific products.} \(T^d, T^s\) Allows a greater number of bilateral
-  relationships to take place.
+  \textbf{Improving productivty, or lowering the costs associated with
+  demanding or supplying specific products.} \(T^d, T^s\) Allows a
+  greater number of bilateral relationships to take place. Studied by
+  Aldasoro et al. (2024), who consolidate sector-specific productivity
+  gains to estimate the total macroeconomic effect.
 \item
   \textbf{Increasing labour automation.} This case requires the
-  inclusion of agents that span both firms and natural persons.
+  inclusion of agents that span both firms and natural persons. Studied
+  by Eloundou et al. (2024).
 \end{itemize}
 
 \subsection{AI improving signal
@@ -932,15 +952,18 @@ for supply cost considerations.
 \subsection{AI increasing labour
 automation}\label{ai-increasing-labour-automation}
 
-\section{Dynamic setting (under
-development)}\label{dynamic-setting-under-development}
+\section{Implications for policy}\label{implications-for-policy}
 
-Generally speaking, equilibria in monotone strategies in dynamic
-settings are more restrictive than in the static version, as they
-require monotone best replies(Mensch (2020)).
+These findings suggest two main policy implications: access to AI
+technology at the edge (or sufficiently close) must be as wide as
+possible.\footnote{However, this policy implication does not consider
+  the significant and meaningful role of energy usage and other
+  climate-related externalities related to training and deployment of
+  advanced AI.}
 
-Previous work exploring coordination in dynamic settings include Amir
-(1996) and Datta, Reffett, and Woźny (2018).
+A second policy implication is that concentration of closed-sourced AI
+models is not necessarily detrimental for societal welfare if open model
+availability has a similar level of performance.
 
 \section{(Tentative) conclusions}\label{tentative-conclusions}
 
@@ -985,14 +1008,15 @@ wide-ranging transformation.
 Acemoglu, Daron. 2024. {``The Simple Macroeconomics of AI.''} National
 Bureau of Economic Research.
 
-\bibitem[\citeproctext]{ref-amir1996continuous}
-Amir, Rabah. 1996. {``Continuous Stochastic Games of Capital
-Accumulation with Convex Transitions.''} \emph{Games and Economic
-Behavior} 15 (2): 111--31.
+\bibitem[\citeproctext]{ref-aldasoro2024impact}
+Aldasoro, Iñaki, Sebastian Doerr, Leonardo Gambacorta, and Daniel Rees.
+2024. {``The Impact of Artificial Intelligence on Output and
+Inflation.''} Bank for International Settlements.
 
 \bibitem[\citeproctext]{ref-amir2005supermodularity}
----------. 2005. {``Supermodularity and Complementarity in Economics: An
-Elementary Survey.''} \emph{Southern Economic Journal} 71 (3): 636--60.
+Amir, Rabah. 2005. {``Supermodularity and Complementarity in Economics:
+An Elementary Survey.''} \emph{Southern Economic Journal} 71 (3):
+636--60.
 
 \bibitem[\citeproctext]{ref-amir2018supermodularity}
 ---------. 2018. {``Supermodularity and Monotone Methods in
@@ -1049,11 +1073,6 @@ Cooper, Russell, and Andrew John. 1988. {``Coordinating Coordination
 Failures in Keynesian Models.''} \emph{The Quarterly Journal of
 Economics} 103 (3): 441--63.
 
-\bibitem[\citeproctext]{ref-datta2018comparing}
-Datta, Manjira, Kevin Reffett, and Łukasz Woźny. 2018. {``Comparing
-Recursive Equilibrium in Economies with Dynamic Complementarities and
-Indeterminacy.''} \emph{Economic Theory} 66: 593--626.
-
 \bibitem[\citeproctext]{ref-diamond1982aggregate}
 Diamond, Peter A. 1982. {``Aggregate Demand Management in Search
 Equilibrium.''} \emph{Journal of Political Economy} 90 (5): 881--94.
@@ -1062,6 +1081,11 @@ Equilibrium.''} \emph{Journal of Political Economy} 90 (5): 881--94.
 Doerr, Sebastian, Leonardo Gambacorta, Luigi Guiso, and Marina Sanchez
 del Villar. 2023. {``Privacy Regulation and Fintech Lending.''}
 \emph{Available at SSRN 4353798}.
+
+\bibitem[\citeproctext]{ref-eloundou2024gpts}
+Eloundou, Tyna, Sam Manning, Pamela Mishkin, and Daniel Rock. 2024.
+{``GPTs Are GPTs: Labor Market Impact Potential of LLMs.''}
+\emph{Science} 384 (6702): 1306--8.
 
 \bibitem[\citeproctext]{ref-farboodi2020long}
 Farboodi, Maryam, and Laura Veldkamp. 2020. {``Long-Run Growth of
@@ -1094,11 +1118,6 @@ Korinek, Anton, and Joseph E Stiglitz. 2018. {``Artificial Intelligence
 and Its Implications for Income Distribution and Unemployment.''} In
 \emph{The Economics of Artificial Intelligence: An Agenda}, 349--90.
 University of Chicago Press.
-
-\bibitem[\citeproctext]{ref-mensch2020existence}
-Mensch, Jeffrey. 2020. {``On the Existence of Monotone Pure-Strategy
-Perfect Bayesian Equilibrium in Games with Complementarities.''}
-\emph{Journal of Economic Theory} 187: 105026.
 
 \bibitem[\citeproctext]{ref-milgrom1990rationalizability}
 Milgrom, Paul, and John Roberts. 1990. {``Rationalizability, Learning,
