@@ -280,7 +280,9 @@ et al. (2010) extend incomplete information to networks, modelling
 uncertainty about the identity and count of neighbours in a network.
 Supermodularity theory is also a flexible way to associate uncertainty
 about the states of the world with the concept of risk aversion (Quiggin
-and Chambers (2006)).
+and Chambers (2006)). This literature complements in a way the works
+that focus on creating macro aggregates from micro variables (D. Baqaee
+and Rubbo (2023)).
 
 \subsubsection{Endogenous information
 acquisition}\label{endogenous-information-acquisition}
@@ -507,10 +509,10 @@ transactions into transactions that are not met correspondingly by the
 counterparty supplying or demanding that good.
 
 This economy abstracts away from important components of
-``micro-to-macro'' aggregation (eg, Baqaee and Farhi (2018), Baqaee and
-Farhi (2019)), such as a definition of elasticities of substitution.
-This is to concentrate attention on the aspects of the model that are
-more dependent on coordination between supply and demand.
+``micro-to-macro'' aggregation (eg, D. R. Baqaee and Farhi (2018), D. R.
+Baqaee and Farhi (2019)), such as a definition of elasticities of
+substitution. This is to concentrate attention on the aspects of the
+model that are more dependent on coordination between supply and demand.
 
 \subsection{Incomplete information}\label{incomplete-information}
 
@@ -739,9 +741,9 @@ existence of strategic complementarities to find equilibria.\footnote{Amir
   useful surveys of this literature.}
 
 One specific challenge is to show that the high-dimensional, non-linear
-environment does not interfere with the monotonicity requirement.
-\ldots.. In contrast, Morris, Shin, and Yildiz (2016) offer solutions
-for classes of models that do not respect monotonicity in types.
+environment does not interfere with the monotonicity
+requirement.\footnote{Morris, Shin, and Yildiz (2016) offer solutions
+  for classes of models that do not respect monotonicity in types.}
 
 Based on this connection, Theorem~\ref{thm-optmthresh} establishes their
 existence and uniqueness.
@@ -779,11 +781,9 @@ actions entails
 \sum_{j=1}^N -t_{ij}^d -t_{ij}^s \leq \sum_{j=1}^N \theta_{ij} + \theta_{ji} - t_{ij}^d - t_{ij}^s,
 \]
 
-since all elements of \(\theta\) are non-negative.
-
-The same argument holds for each of the demand and supply actions
-separately, also when crossed with counterparties' supply or demand
-actions.
+since all elements of \(\theta\) are non-negative. The same argument
+holds for each of the demand and supply actions separately, also when
+crossed with counterparties' supply or demand actions.
 \end{proof}
 
 Theorem~\ref{thm-optmthresh} establishes that the firms in the economy
@@ -893,6 +893,119 @@ in response to endogenous information aquisition, this paper uses these
 results to elaborate on the influence of AI on the economy in
 Section~\ref{sec-AI}.
 
+While the literature on endogenous information acquisiton usually focus
+on a single precision term, the current model allows a more
+disaggregated view where the precision varies along each bilateral
+transaction. This allows firms to endogenous choose whether and how to
+invest in information precision, enabling analyses that correlate a
+firms' own characteristics to choices about the information acquisiton.
+This distinction is important: when given an opportunity to direct their
+information investment, firms choose to be more certain about the signal
+from counterparties they will benefit the most from (ie, where their own
+supply or demand driver is highest) as well as from counterparties that
+are more likely to be close to their own threshold (and thus easier for
+a firm to get wrong and falsely invest). This interim result is
+elaborated in this section.
+
+The first step is to define the expected payoff of a firm as a function
+of its precision choices in Equation~\ref{eq-iiendfirmlevelpayoff}.
+Using the expected bilateral payoff from \(i\) demanding from \(j\) as
+\(\pi_{ij}^d(\hat{\tilde{D}}, \hat{\tilde{S}}, \tau_i, \tau_{-i})\) and
+from \(i\) supplying to \(j\) as
+\(\pi_{ij}^d(\hat{\tilde{D}}, \hat{\tilde{S}}, \tau_i, \tau_{-i})\),
+where \(\tau_{-i}\) is the set of all precision choices of all agents
+except for \(i\), \(\{\tau_j\}_{j \in \{1, \dots, N\}\setminus i}\) and
+agent \(i\) expects \(j \neq i\) to use thresholds
+\(d_{ji}^*(\tau_j), s_{ji}^*(\tau_j)\):
+
+\begin{equation}\phantomsection\label{eq-bilateralpayoffD}{
+\pi_{ij}^d(\hat{\tilde{D}}, \hat{\tilde{S}}, \tau_i, \tau_{-i}) = 
+\begin{cases}
+\mathbb{1}(\tilde{d}_{ij}>d_{ij}^*(\tau)) (d_{ij} s_{ji}\mathbb{1}(\tilde{s}_{ji}>s_{ji}^*(\tau_j)) - t_{ij}^d) & \text{if} \; i = j \\
+\mathbb{1}(\tilde{d}_{ij}>d_{ij}^*(\tau)) (d_{ij} \hat{s}_{ji}\mathbb{1}(\hat{\tilde{s}}_{ji}>s_{ji}^*(\tau_j)) - t_{ij}^d) & \text{otherwise}
+\end{cases}
+}\end{equation}
+
+and similarly, for supply:
+
+\begin{equation}\phantomsection\label{eq-bilateralpayoffS}{
+\pi_{ij}^s(\hat{\tilde{D}}, \hat{\tilde{S}}, \tau_i, \tau_{-i}) = 
+\begin{cases}
+\mathbb{1}(\tilde{s}_{ij}>s_{ij}^*(\tau)) (s_{ij} d_{ji}\mathbb{1}(\tilde{d}_{ji}>s_{ji}^*(\tau_j)) - t_{ij}^s) & \text{if} \; i = j \\
+\mathbb{1}(\tilde{s}_{ij}>s_{ij}^*(\tau)) (s_{ij} \hat{d}_{ji}\mathbb{1}(\hat{\tilde{d}}_{ji}>d_{ji}^*(\tau_j)) - t_{ij}^s) & \text{otherwise},
+\end{cases}
+}\end{equation}
+
+to represent the bilateral payoff from demanding or from supplying to
+\(j\) (an adaptation of Equation~\ref{eq-iifirmlevelpayoff} in a way
+that makes the actions conditioned on the precision (through the
+probability assigned to each observed signal),\footnote{In other words,
+  for two instances of the same observed signal, if the ex ante
+  precision in the first instance is higher than in the second, the
+  probability-weighted of the former will be larger than the latter.}
+then: \begin{equation}\phantomsection\label{eq-iiendfirmlevelpayoff}{
+\begin{split}
+U_i(\tau_i, \tau_{-i}) = \sum_{j \in \{1, \dots, N\}\setminus i} \Bigg( \int_0^1 \int_0^1 \pi_i(\hat{\tilde{D}}, \hat{\tilde{S}}, \tau_i, \tau_{-i}) \; \phi(\hat{\tilde{d}}_{ij}; \tau) d\, \hat{\tilde{d}}_{ij}  \; \phi(\hat{\tilde{d}}_{ij}; \tau) d \hat{\tilde{s}}_{ij} - c(t_{ij}) \Bigg)
+\end{split}
+}\end{equation}
+
+Before defining an equilibrium under information acquisiton, it is worth
+exploring the precision cost function in more detail to take advantage
+of the wealth of bilateral relationships. Each bilateral precision can
+be broken down into a general information technology available to all,
+which is the baseline for all, a component that is specific to firm
+\(i\) and a bilateral precision element,
+\(\tau_{ij} = \iota_0 + \iota_{i} + \iota_{ij}\). The firm- and
+pair-specific precisions only contribute to improved signal if a firm
+acquires them from an information budget \(b_i\); otherwise the
+precision for that pair is \(\tau_{ij} = \iota_0\). The investment in
+the whole economy to acquire more precise information across all
+counterparties in an unspecific way is \(\sum_{i=1}^N \iota_i\), and the
+total expenditure in counterparty-specific precision is
+\(\sum_{i=1}^N \sum_{j=1}^N \iota_{ij}\).
+
+\begin{definition}[Equilibrium with endogenous information acquisition
+stage]\protect\hypertarget{def-infoacquisition}{}\label{def-infoacquisition}
+
+Using action rules in the coordination stage in the form of
+Equation~\ref{eq-thresholds}, and with each agent believing that all
+other agents only choose their own equilibria choices conditional on
+their own covariates \(x_j\), \(j \neq i\), a pure strategy Bayesian
+Nash equilibrium is a set of vector unspecific precision choices
+\(\{\iota_i^{+}\}_{i=1}^N \in \mathbb{R}^N\) and specific precision
+choices \(\{\iota_{ij}^{+}\}_{i=1}^N \in \mathbb{R}^{N \times N}\)
+solving:
+
+\begin{equation}\phantomsection\label{eq-BNE_infoacquis}{
+\pi_i(\hat{\tilde{D}}(\tau_i^{+}), \hat{\tilde{S}}(\tau_i^{+}), \tau_i^{+}, \tau_{-i}^{+}) = 0,
+}\end{equation}
+
+where \(\tau_{i}^{+}\) and \(\tau_{-i}^{+}\) are the respective
+precision choices resulting from the choices of \(\iota_i, \iota_{ij}\).
+
+\emph{Remark 1.} The corner case with no precision acquisition (ie,
+\(\tau_{ij} = \iota_0 \forall \; i, j\) implies
+\(\iota_i = 0 \forall \; i, \iota_{ij} = 0 \forall \; i, j\).
+
+\end{definition}
+
+What Definition~\ref{def-infoacquisition} focuses on is on equilibra in
+which agents each choose the best unspecific and specific precision
+acquisition. Theorem~\ref{thm-infoacquisition} establishes that such an
+equilibrium exists and is not symmetric if the covariates are different.
+
+\begin{theorem}[Existence and uniqueness of equilibria with information
+acquisition]\protect\hypertarget{thm-infoacquisition}{}\label{thm-infoacquisition}
+
+The coordination stage with a prior information acquisition stage has
+pure strategy Bayesian Nash equilibrium.
+
+\end{theorem}
+
+\begin{proof}
+(Under construction)
+\end{proof}
+
 \section{Fundamental and strategic demand and supply
 shocks}\label{fundamental-and-strategic-demand-and-supply-shocks}
 
@@ -917,7 +1030,12 @@ with each other. These are:
 
 \begin{itemize}
 \item
-  \textbf{Improving the precision of economic signals.} \(\tau_{ij}\)
+  \textbf{Improving the precision of specific economic signals.} Because
+  AI technologies benefit from a tremendously wide dataset, they offer
+  specific informatin processing abilities even in areas outside of a
+  user's expertise. In this sense, the cost of \(\tau_{ij}\) in a
+  scenario with AI, \(c'(\tau_{ij})\) becomes cheaper than without it
+  for every \(j\), \(c'(\tau_{ij}) < c(\tau_{ij})\).
 \item
   \textbf{Increasing product innovation.}
 \item
@@ -1057,6 +1175,10 @@ Economic Research.
 ---------. 2019. {``Jeea-Fbbva Lecture 2018: The Microeconomic
 Foundations of Aggregate Production Functions.''} \emph{Journal of the
 European Economic Association} 17 (5): 1337--92.
+
+\bibitem[\citeproctext]{ref-baqaee2023micro}
+Baqaee, David, and Elisa Rubbo. 2023. {``Micro Propagation and Macro
+Aggregation.''} \emph{Annual Review of Economics} 15 (1): 91--123.
 
 \bibitem[\citeproctext]{ref-carlsson1993global}
 Carlsson, Hans, and Eric Van Damme. 1993. {``Global Games and
